@@ -30,12 +30,6 @@
     <ClCompile Include="resourceManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="spriteRenderer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="gameobject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="particles.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -50,15 +44,6 @@
     <ClInclude Include="shader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="camera.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="fireFrameBuffers.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="arrayBuffers.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="processManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -68,32 +53,11 @@
     <ClInclude Include="resourceManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="spriteRenderer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="particles.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="gameobject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="define.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="3.3.shader.fs">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="3.3.shader.vs">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="3.3.screen_shader.fs">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="3.3.screen_shader.vs">
-      <Filter>Resource Files</Filter>
-    </None>
     <None Include="3.3.fire_shader.fs">
       <Filter>Resource Files</Filter>
     </None>
@@ -102,12 +66,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="fire.jpg">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="smoke.jpg">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="Particle.png">
       <Filter>Resource Files</Filter>
     </Image>

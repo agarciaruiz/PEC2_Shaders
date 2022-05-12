@@ -143,41 +143,27 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\FXLibs\OpenGL\src\glad.c" />
-    <ClCompile Include="gameobject.cpp" />
     <ClCompile Include="particles.cpp" />
     <ClCompile Include="processManager.cpp" />
     <ClCompile Include="pec2.cpp" />
     <ClCompile Include="resourceManager.cpp" />
     <ClCompile Include="shader.cpp" />
-    <ClCompile Include="spriteRenderer.cpp" />
     <ClCompile Include="texture.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="arrayBuffers.h" />
-    <ClInclude Include="camera.h" />
-    <ClInclude Include="define.h" />
-    <ClInclude Include="fireFrameBuffers.h" />
-    <ClInclude Include="gameobject.h" />
     <ClInclude Include="particles.h" />
     <ClInclude Include="processManager.h" />
     <ClInclude Include="pec2.h" />
     <ClInclude Include="resourceManager.h" />
     <ClInclude Include="shader.h" />
-    <ClInclude Include="spriteRenderer.h" />
     <ClInclude Include="texture.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="3.3.fire_shader.fs" />
     <None Include="3.3.fire_shader.vs" />
-    <None Include="3.3.screen_shader.fs" />
-    <None Include="3.3.screen_shader.vs" />
-    <None Include="3.3.shader.fs" />
-    <None Include="3.3.shader.vs" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="fire.jpg" />
     <Image Include="Particle.png" />
-    <Image Include="smoke.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

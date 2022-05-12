@@ -6,6 +6,8 @@ out vec4 ParticleColor;
 
 uniform float scale;
 uniform mat4 projection;
+uniform mat4 view;
+uniform mat4 model;
 uniform vec2 offset;
 uniform vec4 color;
 

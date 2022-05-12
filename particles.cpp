@@ -21,13 +21,13 @@ ParticleGenerator::ParticleGenerator(Shader shader, Texture2D texture, unsigned 
     this->init();
 }
 
-void ParticleGenerator::Update(float dt, GameObject& object, unsigned int newParticles, glm::vec2 offset)
+void ParticleGenerator::Update(float dt)
 {
     // update all particles
     for (unsigned int i = 0; i < this->amount; ++i)
     {
         Particle& p = this->particles[i];
-        this->updateParticle(p, dt, object, offset);
+        this->updateParticle(p, dt);
     }
 }
 
@@ -54,39 +54,26 @@ void ParticleGenerator::Draw()
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }
 
-void ParticleGenerator::updateParticle(Particle& p, float dt, GameObject& object, glm::vec2 offset)
+void ParticleGenerator::updateParticle(Particle& p, float dt)
 {
     if (p.Active)
     {	// particle is alive, thus update
-        p.Position.x += p.Direction.x / 10;// Move On The X Axis By X Speed
-        p.Position.y += p.Direction.y / 10;// Move On The Y Axis By Y Speed
-        //p.Position += p.Direction * dt;
+        p.Position += p.Direction * dt;
 
-        if ((p.Position.x > posX) && (p.Position.y > (0.1 + posY))) {
-            p.Gravity.x = -0.3f;
-        }
-        else if ((p.Position.x < posX) && (p.Position.y > (0.1 + posY))) {
-            p.Gravity.x = 0.3f;
-        }
-        else {
-            p.Gravity.x = 0.0f;
-        }
-
-        p.Direction.x += (p.Gravity.x + gravX);			// Take Pull On X Axis Into Account
-        p.Direction.y += (p.Gravity.y + gravY);			// Take Pull On Y Axis Into Account
+        p.Direction.x += randomDirection();			// Take Pull On X Axis Into Account
+        p.Direction.y += randomDirection();			// Take Pull On Y Axis Into Account
         p.Life -= p.Color.a;
 
         if (p.Life <= 0.0f) {
-            float random = ((rand() % 100) - 50) / 10.0f;
-            p.Position = object.Position + glm::vec2(-50, -50);
+            p.Position = glm::vec2(400.0f, 300.0f);
             p.Direction.x = randomDirection();	// X Axis Speed And Direction
             p.Direction.y = randomDirection();	// Y Axis Speed And Direction
+            p.Scale = 50.0f;
             p.Color.r = white[0];
             p.Color.g = white[1];
             p.Color.b = white[2];
             p.Color.a = generateRandomAlpha();
             p.Life = 1.0f;
-            p.Velocity = object.Velocity * 0.1f;
         }
         else if (p.Life < 0.4f)
         {
@@ -120,13 +107,14 @@ void ParticleGenerator::init()
     // set up mesh and attribute properties
     unsigned int VBO;
     float particle_quad[] = {
-    0.0f, 1.0f, 0.0f, 1.0f,
-    1.0f, 0.0f, 1.0f, 0.0f,
-    0.0f, 0.0f, 0.0f, 0.0f,
+    -0.5f, -0.5f, 0.0f, 1.0f,
+    0.5f, -0.5f, 1.0f, 0.0f,
+    0.5f, 0.5f, 0.0f, 0.0f,
+    0.5f, 0.5f, 0.0f, 0.0f,
 
-    0.0f, 1.0f, 0.0f, 1.0f,
-    1.0f, 1.0f, 1.0f, 1.0f,
-    1.0f, 0.0f, 1.0f, 0.0f
+    -0.5f, -0.5f, 0.0f, 1.0f,
+    -0.5f, 0.5f, 1.0f, 1.0f,
+    0.5f, -0.5f, 1.0f, 0.0f,
     };
 
     glGenVertexArrays(1, &this->VAO);
@@ -143,16 +131,6 @@ void ParticleGenerator::init()
     // create this->amount default particle instances
     for (unsigned int i = 0; i < this->amount; ++i) {
         Particle p;
-        float random = ((rand() % 100) - 50) / 10.0f;
-        p.Position = glm::vec2(350.0f, 250);
-        p.Direction.x = randomDirection();	// X Axis Speed And Direction
-        p.Direction.y = randomDirection();	// Y Axis Speed And Direction
-        p.Color.r = white[0];
-        p.Color.g = white[1];
-        p.Color.b = white[2];
-        p.Color.a = generateRandomAlpha();
-        p.Life = 1.0f;
-        p.Velocity = glm::vec2(100.0f) * 0.1f;
         this->particles.push_back(p);
     }
 }
@@ -162,5 +140,5 @@ float ParticleGenerator::generateRandomAlpha() {
 }
 
 float ParticleGenerator::randomDirection() {
-    return float((rand() % 60) - 30.0f);;
+    return float((rand() % 360) - 180.0f);
 }

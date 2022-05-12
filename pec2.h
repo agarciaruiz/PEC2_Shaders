@@ -9,7 +9,6 @@
 #include <stb_image.h>
 #include <iostream>
 #include <vector>
-#include "camera.h"
 
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;

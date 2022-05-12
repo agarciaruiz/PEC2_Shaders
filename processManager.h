@@ -3,6 +3,9 @@
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include <glm/gtc/matrix_transform.hpp>
+#include "resourceManager.h"
+#include "particles.h"
 
 class ProcessManager {
 public:
